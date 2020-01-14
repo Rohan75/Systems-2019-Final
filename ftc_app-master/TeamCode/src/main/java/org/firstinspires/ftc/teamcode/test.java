@@ -12,13 +12,30 @@ class test extends LinearOpMode {
     
     while (opModeIsActive()) {
       
+      // WHEEL CODE
+      // negate if going in the wrong direction
       double leftPower = gamepad1.left_stick_y;
       double rightPower = gamepad1.right_stick_y;
       
       leftMotor.setPower(leftPower);
       rightMotor.setPower(rightPower);
+      // --------------------------
       
-      if (gamepad2.y) {
+      // CLAW CODE
+      if (gamepad2.x) {
+        
+        gripper.setPosition(1);
+        
+      }
+      if (gamepad2.b) {
+        
+        gripper.setPosition(0);
+        
+      }
+      
+      
+      // ARM CODE
+      if (gamepad2.y) { // repeat for gamepad2.a   |  setTargetPosition(0);
         
         armMotor.setTargetPosition(500);
         
@@ -30,6 +47,12 @@ class test extends LinearOpMode {
           
           telemetry.addData("Arm position: ", armMotor.getCurrentPosition());
           telemetry.update();
+          
+          leftPower = gamepad1.left_stick_y;
+          rightPower = gamepad1.right_stick_y;
+      
+          leftMotor.setPower(leftPower);
+          rightMotor.setPower(rightPower);
           
         }
         
