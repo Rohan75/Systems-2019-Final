@@ -6,6 +6,7 @@ class test extends LinearOpMode {
     
     // hardwaremap stuff
     
+    // arm needs to start in down position
     armMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODERS);
     
     waitForStart();
